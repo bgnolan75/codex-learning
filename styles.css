@@ -1,0 +1,170 @@
+:root {
+  color: #1f2933;
+  background: #f4f7f6;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 32px 16px;
+}
+
+.calculator {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #dce4e1;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgb(31 41 51 / 8%);
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #153f3a;
+  font-size: 1.8rem;
+}
+
+.intro,
+.note {
+  color: #52606d;
+  line-height: 1.5;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+label {
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #9fb3ac;
+  border-radius: 5px;
+  font: inherit;
+}
+
+input:focus {
+  outline: 3px solid #b9ddd5;
+  border-color: #176b5c;
+}
+
+.input-with-symbol {
+  display: flex;
+  align-items: center;
+  border: 1px solid #9fb3ac;
+  border-radius: 5px;
+}
+
+.input-with-symbol:focus-within {
+  outline: 3px solid #b9ddd5;
+  border-color: #176b5c;
+}
+
+.input-with-symbol span {
+  padding: 0 12px;
+  color: #52606d;
+}
+
+.input-with-symbol input {
+  border: 0;
+  border-left: 1px solid #dce4e1;
+  border-radius: 0 5px 5px 0;
+  outline: none;
+}
+
+.symbol-right input {
+  border-right: 1px solid #dce4e1;
+  border-left: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+button {
+  margin-top: 14px;
+  padding: 13px;
+  border: 0;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #176b5c;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #105247;
+}
+
+button:focus-visible {
+  outline: 3px solid #8fcfc2;
+  outline-offset: 2px;
+}
+
+.error {
+  min-height: 1.2em;
+  margin: 2px 0 0;
+  color: #b42318;
+}
+
+.results {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #dce4e1;
+}
+
+.results h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1f0;
+}
+
+.result-row strong {
+  white-space: nowrap;
+}
+
+.featured strong {
+  color: #176b5c;
+  font-size: 1.25rem;
+}
+
+.note {
+  margin: 24px 0 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  .calculator {
+    min-height: 100vh;
+    padding: 24px 18px;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .result-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

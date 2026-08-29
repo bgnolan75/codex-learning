@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortgage Payment Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="calculator">
+      <h1>Mortgage Payment Calculator</h1>
+      <p class="intro">Enter the loan details below to estimate your principal and interest payments.</p>
+
+      <form id="mortgage-form">
+        <label for="loan-amount">Loan amount</label>
+        <div class="input-with-symbol">
+          <span aria-hidden="true">$</span>
+          <input id="loan-amount" name="loanAmount" type="number" min="0.01" step="0.01" placeholder="300,000" required />
+        </div>
+
+        <label for="interest-rate">Interest rate</label>
+        <div class="input-with-symbol symbol-right">
+          <input id="interest-rate" name="interestRate" type="number" min="0" step="0.001" placeholder="6.5" required />
+          <span aria-hidden="true">%</span>
+        </div>
+
+        <label for="loan-term">Loan term in years</label>
+        <input id="loan-term" name="loanTerm" type="number" min="1" step="1" placeholder="30" required />
+
+        <button type="submit">Calculate payment</button>
+        <p id="error-message" class="error" role="alert"></p>
+      </form>
+
+      <section id="results" class="results" aria-live="polite" hidden>
+        <h2>Your estimated payments</h2>
+        <div class="result-row featured">
+          <span>Monthly principal &amp; interest</span>
+          <strong id="monthly-payment"></strong>
+        </div>
+        <div class="result-row">
+          <span>Total of all payments</span>
+          <strong id="total-payments"></strong>
+        </div>
+        <div class="result-row">
+          <span>Total interest paid</span>
+          <strong id="total-interest"></strong>
+        </div>
+      </section>
+
+      <p class="note">Estimate only. Taxes, insurance, and other costs are not included.</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
