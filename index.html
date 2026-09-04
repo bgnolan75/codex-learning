@@ -9,9 +9,15 @@
   <body>
     <main class="calculator">
       <h1>Mortgage Payment Calculator</h1>
-      <p class="intro">Enter the loan details below to estimate your principal and interest payments.</p>
+      <p class="eyebrow">Plan with confidence</p>
+      <p class="intro">Estimate your complete monthly housing payment, including common taxes and insurance costs.</p>
 
       <form id="mortgage-form">
+        <div class="section-heading">
+          <span>Loan details</span>
+          <small>Required</small>
+        </div>
+
         <label for="loan-amount">Loan amount</label>
         <div class="input-with-symbol">
           <span aria-hidden="true">$</span>
@@ -27,27 +33,70 @@
         <label for="loan-term">Loan term in years</label>
         <input id="loan-term" name="loanTerm" type="number" min="1" step="1" placeholder="30" required />
 
+        <div class="section-heading costs-heading">
+          <span>Taxes &amp; insurance</span>
+          <small>Enter 0 if not applicable</small>
+        </div>
+
+        <label for="property-taxes">Annual property taxes</label>
+        <div class="input-with-symbol">
+          <span aria-hidden="true">$</span>
+          <input id="property-taxes" name="propertyTaxes" type="number" min="0" step="0.01" value="0" required />
+        </div>
+
+        <label for="homeowners-insurance">Annual homeowners insurance</label>
+        <div class="input-with-symbol">
+          <span aria-hidden="true">$</span>
+          <input id="homeowners-insurance" name="homeownersInsurance" type="number" min="0" step="0.01" value="0" required />
+        </div>
+
+        <label for="mortgage-insurance">Monthly mortgage insurance</label>
+        <div class="input-with-symbol">
+          <span aria-hidden="true">$</span>
+          <input id="mortgage-insurance" name="mortgageInsurance" type="number" min="0" step="0.01" value="0" required />
+        </div>
+
         <button type="submit">Calculate payment</button>
         <p id="error-message" class="error" role="alert"></p>
       </form>
 
       <section id="results" class="results" aria-live="polite" hidden>
-        <h2>Your estimated payments</h2>
-        <div class="result-row featured">
+        <p class="result-kicker">Estimated monthly payment</p>
+        <div class="payment-total">
+          <strong id="total-monthly-payment"></strong>
+          <span>per month</span>
+        </div>
+        <h2>Monthly payment breakdown</h2>
+        <div class="result-row">
           <span>Monthly principal &amp; interest</span>
           <strong id="monthly-payment"></strong>
         </div>
         <div class="result-row">
-          <span>Total of all payments</span>
-          <strong id="total-payments"></strong>
+          <span>Property taxes</span>
+          <strong id="monthly-property-taxes"></strong>
         </div>
         <div class="result-row">
-          <span>Total interest paid</span>
-          <strong id="total-interest"></strong>
+          <span>Homeowners insurance</span>
+          <strong id="monthly-homeowners-insurance"></strong>
         </div>
+        <div class="result-row">
+          <span>Mortgage insurance</span>
+          <strong id="monthly-mortgage-insurance"></strong>
+        </div>
+        <details>
+          <summary>View loan totals</summary>
+          <div class="result-row">
+            <span>Total principal &amp; interest payments</span>
+            <strong id="total-payments"></strong>
+          </div>
+          <div class="result-row">
+            <span>Total interest paid</span>
+            <strong id="total-interest"></strong>
+          </div>
+        </details>
       </section>
 
-      <p class="note">Estimate only. Taxes, insurance, and other costs are not included.</p>
+      <p class="note">For planning purposes only. Your actual payment may also include HOA fees or other costs and can change as taxes and insurance premiums change.</p>
     </main>
 
     <script src="script.js"></script>
