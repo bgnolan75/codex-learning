@@ -3,102 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mortgage Payment Calculator</title>
+    <title>Mortgage Loan Comparison</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="calculator">
-      <h1>Mortgage Payment Calculator</h1>
-      <p class="eyebrow">Plan with confidence</p>
-      <p class="intro">Estimate your complete monthly housing payment, including common taxes and insurance costs.</p>
+      <header class="page-header">
+        <p class="eyebrow">Loan comparison</p>
+        <h1>Compare two mortgage options</h1>
+        <p class="intro">See how two loan scenarios compare, from the monthly payment to the cash you may need at closing.</p>
+      </header>
 
-      <form id="mortgage-form">
-        <div class="section-heading">
-          <span>Loan details</span>
-          <small>Required</small>
+      <form id="mortgage-form" novalidate>
+        <div class="option-grid input-options">
+          <fieldset class="option-card option-a">
+            <legend><span>A</span> Option A</legend>
+            <p class="option-help">Enter the details for your first loan.</p>
+            <div class="field-grid">
+              <label>Loan amount <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="aLoanAmount" type="number" min="0.01" step="0.01" value="300000" required /></span></label>
+              <label>Interest rate <span class="input-with-symbol symbol-right"><input name="aInterestRate" type="number" min="0" step="0.001" value="6.5" required /><span aria-hidden="true">%</span></span></label>
+              <label>Loan term <span class="input-with-suffix"><input name="aLoanTerm" type="number" min="1" step="1" value="30" required /><span>years</span></span></label>
+              <label>Annual property taxes <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="aPropertyTaxes" type="number" min="0" step="0.01" value="4800" required /></span></label>
+              <label>Annual homeowners insurance <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="aHomeownersInsurance" type="number" min="0" step="0.01" value="1800" required /></span></label>
+              <label>Monthly mortgage insurance <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="aMortgageInsurance" type="number" min="0" step="0.01" value="125" required /></span></label>
+              <label>Cash to close <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="aCashToClose" type="number" min="0" step="0.01" value="25000" required /></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="option-card option-b">
+            <legend><span>B</span> Option B</legend>
+            <p class="option-help">Enter the details for your second loan.</p>
+            <div class="field-grid">
+              <label>Loan amount <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="bLoanAmount" type="number" min="0.01" step="0.01" value="285000" required /></span></label>
+              <label>Interest rate <span class="input-with-symbol symbol-right"><input name="bInterestRate" type="number" min="0" step="0.001" value="6.25" required /><span aria-hidden="true">%</span></span></label>
+              <label>Loan term <span class="input-with-suffix"><input name="bLoanTerm" type="number" min="1" step="1" value="30" required /><span>years</span></span></label>
+              <label>Annual property taxes <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="bPropertyTaxes" type="number" min="0" step="0.01" value="4800" required /></span></label>
+              <label>Annual homeowners insurance <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="bHomeownersInsurance" type="number" min="0" step="0.01" value="1800" required /></span></label>
+              <label>Monthly mortgage insurance <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="bMortgageInsurance" type="number" min="0" step="0.01" value="0" required /></span></label>
+              <label>Cash to close <span class="input-with-symbol"><span aria-hidden="true">$</span><input name="bCashToClose" type="number" min="0" step="0.01" value="40000" required /></span></label>
+            </div>
+          </fieldset>
         </div>
 
-        <label for="loan-amount">Loan amount</label>
-        <div class="input-with-symbol">
-          <span aria-hidden="true">$</span>
-          <input id="loan-amount" name="loanAmount" type="number" min="0.01" step="0.01" placeholder="300,000" required />
-        </div>
-
-        <label for="interest-rate">Interest rate</label>
-        <div class="input-with-symbol symbol-right">
-          <input id="interest-rate" name="interestRate" type="number" min="0" step="0.001" placeholder="6.5" required />
-          <span aria-hidden="true">%</span>
-        </div>
-
-        <label for="loan-term">Loan term in years</label>
-        <input id="loan-term" name="loanTerm" type="number" min="1" step="1" placeholder="30" required />
-
-        <div class="section-heading costs-heading">
-          <span>Taxes &amp; insurance</span>
-          <small>Enter 0 if not applicable</small>
-        </div>
-
-        <label for="property-taxes">Annual property taxes</label>
-        <div class="input-with-symbol">
-          <span aria-hidden="true">$</span>
-          <input id="property-taxes" name="propertyTaxes" type="number" min="0" step="0.01" value="0" required />
-        </div>
-
-        <label for="homeowners-insurance">Annual homeowners insurance</label>
-        <div class="input-with-symbol">
-          <span aria-hidden="true">$</span>
-          <input id="homeowners-insurance" name="homeownersInsurance" type="number" min="0" step="0.01" value="0" required />
-        </div>
-
-        <label for="mortgage-insurance">Monthly mortgage insurance</label>
-        <div class="input-with-symbol">
-          <span aria-hidden="true">$</span>
-          <input id="mortgage-insurance" name="mortgageInsurance" type="number" min="0" step="0.01" value="0" required />
-        </div>
-
-        <button type="submit">Calculate payment</button>
+        <button type="submit">Compare loan options</button>
         <p id="error-message" class="error" role="alert"></p>
       </form>
 
       <section id="results" class="results" aria-live="polite" hidden>
-        <p class="result-kicker">Estimated monthly payment</p>
-        <div class="payment-total">
-          <strong id="total-monthly-payment"></strong>
-          <span>per month</span>
+        <div class="results-heading">
+          <div><p class="eyebrow">Your comparison</p><h2>Estimated loan costs</h2></div>
+          <p><span class="key-dot" aria-hidden="true"></span> Lower amount</p>
         </div>
-        <h2>Monthly payment breakdown</h2>
-        <div class="result-row">
-          <span>Monthly principal &amp; interest</span>
-          <strong id="monthly-payment"></strong>
+        <div class="option-grid">
+          <article class="result-card" data-option="a">
+            <h3><span>A</span> Option A</h3>
+            <div class="result-row"><span>Loan amount</span><strong data-result="loanAmount"></strong></div>
+            <div class="result-row"><span>Interest rate</span><strong data-result="interestRate"></strong></div>
+            <div class="result-row"><span>Loan term</span><strong data-result="loanTerm"></strong></div>
+            <div class="result-row"><span>Principal &amp; interest</span><strong data-result="monthlyPayment"></strong></div>
+            <div class="result-row"><span>Mortgage insurance</span><strong data-result="monthlyMortgageInsurance"></strong></div>
+            <div class="result-row"><span>Property taxes</span><strong data-result="monthlyPropertyTaxes"></strong></div>
+            <div class="result-row"><span>Homeowners insurance</span><strong data-result="monthlyHomeownersInsurance"></strong></div>
+            <div class="featured-result" data-comparison="payment"><span>Total estimated monthly payment</span><strong data-result="totalMonthlyPayment"></strong><small data-lower-label></small></div>
+            <div class="featured-result cash" data-comparison="cash"><span>Cash to close</span><strong data-result="cashToClose"></strong><small data-lower-label></small></div>
+          </article>
+          <article class="result-card" data-option="b">
+            <h3><span>B</span> Option B</h3>
+            <div class="result-row"><span>Loan amount</span><strong data-result="loanAmount"></strong></div>
+            <div class="result-row"><span>Interest rate</span><strong data-result="interestRate"></strong></div>
+            <div class="result-row"><span>Loan term</span><strong data-result="loanTerm"></strong></div>
+            <div class="result-row"><span>Principal &amp; interest</span><strong data-result="monthlyPayment"></strong></div>
+            <div class="result-row"><span>Mortgage insurance</span><strong data-result="monthlyMortgageInsurance"></strong></div>
+            <div class="result-row"><span>Property taxes</span><strong data-result="monthlyPropertyTaxes"></strong></div>
+            <div class="result-row"><span>Homeowners insurance</span><strong data-result="monthlyHomeownersInsurance"></strong></div>
+            <div class="featured-result" data-comparison="payment"><span>Total estimated monthly payment</span><strong data-result="totalMonthlyPayment"></strong><small data-lower-label></small></div>
+            <div class="featured-result cash" data-comparison="cash"><span>Cash to close</span><strong data-result="cashToClose"></strong><small data-lower-label></small></div>
+          </article>
         </div>
-        <div class="result-row">
-          <span>Property taxes</span>
-          <strong id="monthly-property-taxes"></strong>
-        </div>
-        <div class="result-row">
-          <span>Homeowners insurance</span>
-          <strong id="monthly-homeowners-insurance"></strong>
-        </div>
-        <div class="result-row">
-          <span>Mortgage insurance</span>
-          <strong id="monthly-mortgage-insurance"></strong>
-        </div>
-        <details>
-          <summary>View loan totals</summary>
-          <div class="result-row">
-            <span>Total principal &amp; interest payments</span>
-            <strong id="total-payments"></strong>
-          </div>
-          <div class="result-row">
-            <span>Total interest paid</span>
-            <strong id="total-interest"></strong>
-          </div>
-        </details>
       </section>
 
-      <p class="note">For planning purposes only. Your actual payment may also include HOA fees or other costs and can change as taxes and insurance premiums change.</p>
+      <p class="note"><strong>Planning note:</strong> These figures are estimates, not a loan offer. Cash to close is entered by you and may include a down payment and closing costs. Actual payments can include HOA fees or other costs, and taxes and insurance may change.</p>
     </main>
-
     <script src="script.js"></script>
   </body>
 </html>
